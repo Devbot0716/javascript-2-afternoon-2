@@ -19,6 +19,10 @@ var arr = [10,20,30];
 
 //Code Here
 
+function first(arr){
+  return arr[0];
+}
+
 
 
 ////////// PROBLEM 2 //////////
@@ -33,6 +37,10 @@ var arr = [40,50,60];
 */
 
 //Code Here
+function last(arr){
+  var poppedNum = arr.pop()
+  return poppedNum;
+}
 
 
 
@@ -49,6 +57,12 @@ var family = ['Tyler', 'Jordyn', 'Ryan', 'Chelsey', 'Ireland'];
 
 //Code Here
 
+function looper(family){
+  for(var i = 0; i < family.length; i++){
+    alert(family[i]);
+  }
+}
+
 
 
 ////////// PROBLEM 4 //////////
@@ -63,9 +77,13 @@ var letters = ['A', 'B', 'C', 'D', 'E'];
 */
 
 //Code Here
-
-
-
+function reversedLooper(letters){
+  for(var i = letters.length - 1; i >= 0; i--){
+    alert(letters[i])
+  }
+  return letters;
+}
+// reversedLooper(letters);
 ////////// PROBLEM 5 //////////
 
 // Do not edit the code below.
@@ -79,7 +97,17 @@ var nums = [1,2,3,6,22,98,45,23,22,12];
 
 //Code Here
 
+function evenFinder(nums){
+  var evensArr = [];
+  for(var i = 0; i < nums.length; i++){
+    if(nums[i] % 2 === 0){
+      evensArr.push(nums[i]);
+    }
+  }
+  return evensArr;
+}
 
+evenFinder(nums);
 
 ////////// EXTRA PRACTICE PROBLEMS BELOW //////////
 
@@ -96,6 +124,22 @@ var numbersArray = [1,2,34,54,55,34,32,11,19,17,54,66,13];
 
 //Code Here
 
+function divider(numbersArray){
+  var evensArr =[];
+  var oddsArr =[];
+  for(var i = 0; i < numbersArray.length; i++){
+    if(numbersArray[i] % 2 === 0){
+      evensArr.push(numbersArray[i]);
+    } else {
+      oddsArr.push(numbersArray[i])
+    }
+  }
+  var newArr = [];
+  newArr.push(evensArr, oddsArr);
+  return newArr;
+}
+
+console.log(divider(numbersArray))
 
 
 ////////// PROBLEM 7 //////////
@@ -106,8 +150,8 @@ var getRandomArbitrary = function() {
 };
 // Do not edit the code above.
 
+var numbers = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
 /* 
-  var numbers = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
   Above you're given a function that will return a random number between 0 and 30. There is also a commented out array full of numbers to help you visualize what your function will be receiving.
   Write a function named finder that will take in an array as an argument.
   It will then  get a random number (by invoking getRandomArbitrary).
@@ -117,7 +161,20 @@ var getRandomArbitrary = function() {
 
 //Code Here
 
-
+/**
+ * 
+ * @param {number[]} numbers 
+ */
+function finder(numbers){
+  var randomNum = getRandomArbitrary();
+  for(var i = 0; i < numbers.length; i++){
+    if(numbers.includes(randomNum)){
+      return true;
+    }
+  }
+  return false;
+}
+// console.log(finder(numbers));
 
 ////////// PROBLEM 8 //////////
 
@@ -143,10 +200,25 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   removeItem(myGroceryList) --> [];
   addItem() --> [];
 */
-
 //Code Here
 
+function removeItem(myGroceryList, itemToRemove){
+  for(var i = 0; i < myGroceryList.length; i++){
+    if(myGroceryList[i] === itemToRemove){
+      myGroceryList.splice(i, 1);
+    }
+  }
+  return myGroceryList
+}
 
+function addItem(myGroceryList, itemToAdd){
+  myGroceryList.push(itemToAdd);
+  return myGroceryList;
+}
+
+removeItem(myGroceryList, 'pizza');
+
+addItem(myGroceryList, 'banana');
 
 ////////// PROBLEM 9 //////////
 
@@ -155,6 +227,13 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 */
 
 //Code Here
+function maker(){
+  var newArray = new Array(215); // creates a new array? what is Array()?
+  for(var i = 0; i < 215; i++){
+    newArray[i] = i + 1;// What is this??
+  }
+  return newArray;
+}
 
 
 
@@ -171,7 +250,14 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 */
   
 //Code Here
+function addTen(numbers, cb){
+   var newArr = numbers.map(function(e){
+      return (e*1) + 10;
+   });
+   return newArr;
+}
 
+addTen(numbers);
 
 
 ////////// PROBLEM 11 //////////
@@ -188,7 +274,6 @@ for(var i = 0; i < num2; i++){
   arr2.push(i);
 }
 // Do not edit the code above.
-
 /*
   Above is some code that adds a random number of values to both arr1 and arr2.
   Write a function called 'longer' that is given arr1 and arr2 as it's only arguments. 
@@ -196,6 +281,15 @@ for(var i = 0; i < num2; i++){
 */
 
 //Code Here
+function longer(arr1, arr2){
+  if(arr1.length > arr2.length){
+    return arr1;
+  } else {
+    return arr2;
+  }
+}
+
+longer(arr1, arr2);
 
 
 
@@ -208,6 +302,21 @@ for(var i = 0; i < num2; i++){
 */
 
 //Code Here
+
+function both(arr1, arr2){
+  var newArray = [];
+  for(var i = 0; i < arr1.length; i++){
+    for(var j = 0; j < arr2.length; j++){
+      if(arr1[i] === arr2[j]){
+         newArray.push(arr1[i]);
+      }
+    }
+  }
+  console.log(newArray);
+  return newArray;
+}
+
+both(arr1, arr2);
 
 
 
@@ -249,6 +358,9 @@ var colt = {
 
 //Code Here
 
+devMountainEmployees.push(tyler, cahlan, ryan, colt)
+console.log(devMountainEmployees.length);
+
 
 
 /*
@@ -257,7 +369,18 @@ var colt = {
 */
 
 //Code Here
+function removeUser(persontoremove){
+  for(var i = 0; i < devMountainEmployees.length; i++){
+    if(devMountainEmployees[i].name === persontoremove){
+      devMountainEmployees.splice(i, 1);
+    }
+  
+  }
+  return devMountainEmployees;
+}
 
+removeUser('Cahlan');
+console.log(devMountainEmployees.length)
 
 
 ////////// PROBLEM 13 //////////
@@ -269,6 +392,7 @@ var colt = {
 */
 
 //Code Here
+var users = [];
 
 
 
@@ -288,6 +412,23 @@ var user1 = {
 // Do not edit the code above.
 
 //Code Here
+users.push(user1);
+
+var user2 = {
+  name:'Devin',
+  email: 'devin@devin.com',
+  password: 'secret',
+  username: 'devdev'
+}
+
+user3 = {
+  name: 'Yulia',
+  email: 'yu@yu.com',
+  password: 'secret',
+  username: 'yuyu'
+}
+
+users.push(user2, user3);
 
 
 
@@ -302,9 +443,18 @@ var user1 = {
 */
 
 //Code Here
-
-
+function deleteTylersAccount(){
+  for(var i = 0; i < users.length; i++){
+    if(users[i].name === "Tyler McGinnis" ){
+      users.splice(i, 1);
+    }
+  }
+  return users;
+}
+console.log(users)
+deleteTylersAccount();
 
 /*
   The activity we just did is very much how data works in 'the real world'.
 */
+
